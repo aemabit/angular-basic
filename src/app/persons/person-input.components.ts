@@ -1,4 +1,6 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component } from "@angular/core";
+import { PersonService } from "../services/person.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-person-input",
@@ -6,12 +8,14 @@ import { Component, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./person-input.component.scss"],
 })
 export class PersonInputComponent {
-  @Output() personCreate = new EventEmitter<string>();
   enteredPersonName = "";
 
+  constructor(private personService: PersonService, private router: Router) {}
 
   onAddPerson() {
-    this.personCreate.emit(this.enteredPersonName)
+    this.personService.addPerson(this.enteredPersonName);
     this.enteredPersonName = "";
+    this.router.navigate(["/"]);
   }
+
 }
