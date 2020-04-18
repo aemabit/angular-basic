@@ -13,7 +13,7 @@ export class PersonInputComponent {
   constructor(private personService: PersonService, private router: Router) {}
 
   onAddPerson() {
-    this.personService.addPerson(this.enteredPersonName);
+    // this.personService.addPerson(this.enteredPersonName);
     this.enteredPersonName = "";
     this.router.navigate(["/"]);
   }
